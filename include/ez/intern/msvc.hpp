@@ -1,47 +1,36 @@
-#include <ez/intrinsics.hpp>
-
 #include "intrin.h"
 #include "immintrin.h"
 #include <stdlib.h>
 
-#include <type_traits>
-
 namespace ez {
-	// Reverse the endianess
-	inline uint16_t byteswap_u16(uint16_t val) {
+	uint16_t byteswap_u16(uint16_t val) {
 		return _byteswap_ushort(val);
 	}
-	// Reverse the endianess
-	inline uint32_t byteswap_u32(uint32_t val) {
+	uint32_t byteswap_u32(uint32_t val) {
 		return _byteswap_ulong(val);
 	}
-	// Reverse the endianess
-	inline uint64_t byteswap_u64(uint64_t val) {
+	uint64_t byteswap_u64(uint64_t val) {
 		return _byteswap_uint64(val);
 	}
 
-	// Count the ones in a binary value
-	inline uint16_t popcount_u16(uint16_t val) {
+	uint16_t popcount_u16(uint16_t val) {
 		return __popcnt16(val);
 	}
-	// Count the ones in a binary value
-	inline uint32_t popcount_u32(uint32_t val) {
+	uint32_t popcount_u32(uint32_t val) {
 		return __popcnt(val);
 	}
-	// Count the ones in a binary value
-	inline uint64_t popcount_u64(uint64_t val) {
+	uint64_t popcount_u64(uint64_t val) {
 		return __popcnt64(val);
 	}
 
-	// returns non-zero if bit at index is one
-	inline uint8_t bittest_i32(const long& val, long index) {
-		return _bittest(&val, index);
+	uint8_t bittest_i32(const int32_t& val, int32_t index) {
+		return _bittest((const long*) & val, (long)index);
 	}
-	// returns non-zero if bit at index is one
-	inline uint8_t bittest_i64(const int64_t & val, int64_t index) {
+	uint8_t bittest_i64(const int64_t & val, int64_t index) {
 		return _bittest64(&val, index);
 	}
 	
+	/*
 	// performs an addition with a carry-in and returns the carry-out
 	inline uint8_t addcarry_u16(uint8_t cin, uint16_t a, uint16_t b, uint16_t & out) {
 		return _addcarry_u16(cin, a, b, &out);
@@ -157,5 +146,5 @@ namespace ez {
 	inline uint64_t rotr_u64(uint64_t val, int shift) {
 		return _rotr64(val, shift);
 	}
-	
+	*/
 };

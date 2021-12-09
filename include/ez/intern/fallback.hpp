@@ -1,5 +1,3 @@
-#include <ez/intrinsics.hpp>
-
 namespace ez {
 	inline uint16_t byteswap_u16(uint16_t val) {
 		return uint16_t(
@@ -50,10 +48,10 @@ namespace ez {
 		return ((val & 0xFFFF'FFFF'0000'0000ull) >> 32) + ((val & 0x0000'0000'FFFF'FFFFull) << 32);
 	}
 
-	inline uint8_t bittest_i32(const long& val, long index) {
+	inline uint8_t bittest_i32(const int32_t& val, int32_t index) {
 		return (val & (1l << index)) != 0;
 	}
-	inline uint8_t bittest_i64(const long long& val, long long index) {
+	inline uint8_t bittest_i64(const int64_t& val, int64_t index) {
 		return (val & (1ll << index)) != 0;
 	}
 }
